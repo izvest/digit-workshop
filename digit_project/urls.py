@@ -1,9 +1,9 @@
 from django.conf import settings
-from django.conf.urls import url
+from django.urls import path
 from django.contrib import admin
 
 urlpatterns = [
-    # url(r'^da/', admin.site.urls),
+    path('da/', admin.site.urls),
 ]
 
 if settings.DEBUG:
