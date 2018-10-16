@@ -30,7 +30,7 @@ any reason there's a need to recreate it, here's how to do it:
 ### Daily running
 
 * Run `docker-compose build django` to build development environment docker image
-* Run 'docker-compose up` to start the development environment
+* Run `docker-compose up` to start the development environment
 
 
 ## Running tests
