@@ -19,7 +19,7 @@ env = environ.Env(
     SECRET_KEY=(str, 'foo'),
     VAR_ROOT=(str, default_var_root),
     ALLOWED_HOSTS=(list, []),
-    DATABASE_URL=(str, 'sqlite:////tmp/my-tmp-sqlite.db'),
+    DATABASE_URL=(str, 'sqlite:///var/db.sqlite3'),
     CACHE_URL=(str, 'locmemcache://'),
     EMAIL_URL=(str, 'consolemail://'),
     SENTRY_DSN=(str, ''),
@@ -41,6 +41,9 @@ CACHES = {'default': env.cache()}
 vars().update(env.email_url())  # EMAIL_BACKEND etc.
 
 var_root = env.path('VAR_ROOT')
+if not os.path.isdir(var_root()):
+    os.makedirs(var_root())
+
 MEDIA_ROOT = var_root('media')
 STATIC_ROOT = var_root('static')
 MEDIA_URL = "/media/"
