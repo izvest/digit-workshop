@@ -16,7 +16,8 @@ services:
     django:
         build: .
         command: >
-            sh -c "python /code/manage.py migrate &&
+            sh -c "/code/utils/wait-for-it.sh digit_mysql:3306 -t 15 &&
+                   python /code/manage.py migrate &&
                    python /code/manage.py runserver 0.0.0.0:8000"
         volumes:
             - .:/code
