@@ -1,18 +1,21 @@
 # Digit Project
 
 Hello! I am the Digit & Anders workshop project.
-My developers are lazy and haven't written a good README.
+
 
 ## Development
+
 
 ### Creating and updating requirements
 
 * Run `prequ update`
 
+
 ### Installing requirements
 
 * Run `pip install -r requirements.txt`
 * Run `pip install -r requirements-dev.txt`
+
 
 ### Database
 
@@ -31,11 +34,10 @@ Allow user to create test database
 
 * Set the `DEBUG` environment variable to `1`.
 * Run `python manage.py migrate`
-* Run `npm run build`
 * Run `python manage.py runserver 0:8000`
+
 
 ## Running tests
 
 * Set the `DEBUG` environment variable to `1`.
-* Run `py.test`.
-
+* Run `pytest`.
