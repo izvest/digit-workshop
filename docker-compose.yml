@@ -1,12 +1,31 @@
 version: '3'
 services:
+    mysql:
+        image: mysql:5.7
+        environment:
+            MYSQL_ROOT_PASSWORD: digit_project
+            MYSQL_DATABASE: digit_project
+            MYSQL_PASSWORD: digit_project
+            MYSQL_USER: digit_project
+        ports:
+            - "3306:3306"
+        volumes:
+            - digit_mysql:/var/lib/mysql
+        container_name: digit_mysql
+
     django:
         build: .
-        command: python /code/manage.py runserver 0.0.0.0:8000
+        command: >
+            sh -c "python /code/manage.py migrate &&
+                   python /code/manage.py runserver 0.0.0.0:8000"
         volumes:
             - .:/code
         environment:
             - DEBUG=1
+            - DATABASE_URL=mysql://digit_project:digit_project@digit_mysql/digit_project
         ports:
             - "8000:8000"
         container_name: digit_project
+
+volumes:
+    digit_mysql:

@@ -19,16 +19,13 @@ Hello! I am the Digit & Anders workshop project.
 
 ### Database
 
-To setup a database compatible with default database settings:
+Docker environment has working database set up out of the box. If for
+any reason there's a need to recreate it, here's how to do it:
 
-Create user and database
+    docker exec -i digit_mysql mysql -uroot -pdigit_project -e "CREATE USER 'digit_project'@'localhost' IDENTIFIED BY 'digit_project';"
+    docker exec -i digit_mysql mysql -uroot -pdigit_project -e "CREATE DATABASE digit_project;"
+    docker exec -i digit_mysql mysql -uroot -pdigit_project -e "GRANT ALL PRIVILEGES ON digit_project.* TO 'digit_project'@'localhost';"
 
-    sudo -u postgres createuser -P -R -S digit_project  # use password `digit_project`
-    sudo -u postgres createdb -O digit_project digit_project
-
-Allow user to create test database
-
-    sudo -u postgres psql -c "ALTER USER digit_project CREATEDB;"
 
 ### Daily running
 
