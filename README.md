@@ -29,9 +29,8 @@ any reason there's a need to recreate it, here's how to do it:
 
 ### Daily running
 
-* Set the `DEBUG` environment variable to `1`.
-* Run `python manage.py migrate`
-* Run `python manage.py runserver 0:8000`
+* Run `docker-compose build djang` to build development environment docker image
+* Run 'docker-compose up` to start the development environment
 
 
 ## Running tests
