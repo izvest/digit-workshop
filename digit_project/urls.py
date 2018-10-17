@@ -4,6 +4,8 @@ from django.contrib import admin
 
 urlpatterns = [
     path('da/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls')),
+    path('', include('blog.urls'))
 ]
 
 if settings.DEBUG:

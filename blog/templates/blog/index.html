@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+
+{% block content%}
+    {{if blog_posts}
+        <ul>
+            {{% for post in blog_posts%}}
+                
+        </ul>
+    {{else}}
+        <p>Nothin here..</p>
+    {{endif}}
+{%{% endblock %}%}
