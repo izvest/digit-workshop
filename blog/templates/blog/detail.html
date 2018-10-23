@@ -1,7 +1,9 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
-{% block content%}
-    <h1>{{post.title}}</h1>
-    <p>{{blog_post.date}}</p>
-    <p>{{blog_post.text}}</p>
-{%{% endblock %}%}
+{% block content %}
+    <h1 class="mt-5">{{ blog_post.title }}</h1>
+
+    <p>{{ blog_post.date }}</p>
+
+    <p>{{ blog_post.content }}</p>
+{% endblock content %}

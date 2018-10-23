@@ -1,12 +1,43 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
-{% block content%}
-    {{if blog_posts}
+{% block content %}
+    <h1 class="mt-5">Blog</h1>
+
+    {% if blog_posts %}
         <ul>
-            {{% for post in blog_posts%}}
-                
+            {% for post in blog_posts %}
+                <li><a href="{{ post.detail_url }}">{{ post.title }}</a></li>
+            {% endfor %}
         </ul>
-    {{else}}
-        <p>Nothin here..</p>
-    {{endif}}
-{%{% endblock %}%}
+    {% else %}
+        <p>Nothing here...</p>
+    {% endif %}
+
+    <input
+        type="button"
+        id="get_posts"
+        value="Get blog posts from API!"
+        class="btn btn-primary">
+
+    <div id="results">
+        <ul></ul>
+    </div>
+{% endblock content %}
+
+{% block extra_js %}
+    <script>
+        $('#get_posts').click(function() {
+            $results = $('#results');
+            $.get("{% url 'api-blog-posts' %}", function(data) {
+                console.log(data);
+                $list = $('<ul></ul>');
+                data.forEach(function(post) {
+                    $list.append(
+                        $('<li></<li>').text(post.title)
+                    );
+                });
+                $results.append($list);
+            });
+        });
+    </script>
+{% endblock extra_js %}
