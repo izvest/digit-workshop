@@ -1,6 +1,8 @@
 from django.urls import path
-from . import views
+from foli.views import home, stop_detail
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', home, name='home'),
+    path('<int:stop_id>/', stop_detail, name='stop-detail'),
+    path('<str:stop_id>/', stop_detail, name='stop-detail'),
 ]
